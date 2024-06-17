@@ -1,0 +1,60 @@
+﻿<Window x:Class="FigureSelector.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FigureSelector"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="MainButton" Grid.Row="0" Grid.Column="0" Margin="2" Click="MainButton_Click">Главный</Button>
+            <Button x:Name="SecondaryButton" Grid.Row="1" Grid.Column="0" Margin="2" Click="SecondaryButton_Click">Второстепенный</Button>
+            <Label Grid.Row="0" Grid.Column="1" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center">Цвет прямоугольника</Label>
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="2" Name="ColorComboBox" VerticalAlignment="Center"
+                      SelectionChanged="ColorComboBox_SelectionChanged" />
+            <Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">Лог в консоль</Label>
+            <CheckBox x:Name="ConsoleLogCheckBox" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" 
+                      VerticalAlignment="Center"></CheckBox>
+            <Label Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">Лог в файл</Label>
+            <CheckBox x:Name="FileLogCheckBox" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" 
+                      VerticalAlignment="Center"></CheckBox>
+            <Label Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">Включать внешние точки</Label>
+            <CheckBox x:Name="IncludeExternalPointsCheckBox" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" 
+                      VerticalAlignment="Center"></CheckBox>
+            <Label Grid.Row="0" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center">Включить цвет</Label>
+            <ListBox x:Name="IncludedColorsListBox" Grid.Row="1" Grid.Column="5" Margin="2" 
+                     ToolTip="Клик правой кнопкой чтобы удалить"
+                     PreviewMouseRightButtonDown="IncludedColorsListBox_PreviewMouseRightButtonDown" ></ListBox>
+            <Label Grid.Row="0" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center">Игнорировать цвет</Label>
+            <ListBox x:Name="IgnoredColorsListBox" Grid.Row="1" Grid.Column="6" Margin="2" 
+                     ToolTip="Клик правой кнопкой чтобы удалить"
+                     PreviewMouseRightButtonDown="IgnoredColorsListBox_PreviewMouseRightButtonDown" ></ListBox>
+            <Button x:Name="ClearButton" Grid.Row="0" Grid.Column="7" Margin="3" Click="ClearButton_Click">Очистить</Button>
+        </Grid>
+        <Canvas Name="DrawCanvas" Grid.Row="1" Background="White"
+                MouseLeftButtonDown="Canvas_MouseLeftButtonDown"
+                MouseMove="Canvas_MouseMove"
+                MouseLeftButtonUp="Canvas_MouseLeftButtonUp"/>
+        <TextBox Name="LogTextBox" Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" />
+    </Grid>
+</Window>
